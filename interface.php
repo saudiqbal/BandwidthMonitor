@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('America/New_York');
 $ProbeInterval = 1;
 
 [$rx, $tx] = explode(',', exec("awk -v OFS=, '/ens18:/ { print $10, $2 }' /proc/net/dev"));
