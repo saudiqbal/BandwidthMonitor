@@ -1,6 +1,6 @@
 <?php
 $startTime = array_sum(explode(' ', microtime()));
-$db = new PDO('sqlite:/var/www/html/BandwidthMonitor/BandwidthMonitor.db');
+include 'config.php';
 [$CurrentY, $CurrentM, $CurrentD, $CurrentH] = explode('-', date('Y-m-d-H'));
 $months = array(
 '01' => 'Jan',

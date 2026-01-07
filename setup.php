@@ -1,3 +1,6 @@
+<?php
+include 'config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +16,6 @@ if($setup == "true")
 try
 {
 //open the database
-	$db = new PDO('sqlite:/var/www/html/BandwidthMonitor/BandwidthMonitor.db');
 	//create the tables
 	$db->exec("CREATE TABLE Hourly (M TEXT, D TEXT, H TEXT, rx TEXT, tx TEXT, rxtotal TEXT, txtotal TEXT)");
 	$db->exec("CREATE TABLE Daily (Y TEXT, M TEXT, D TEXT, rxtotal TEXT, txtotal TEXT)");

@@ -1,8 +1,6 @@
 <?php
-date_default_timezone_set('America/New_York');
-$ProbeInterval = 1;
+include 'config.php';
 
-$url = 'http://192.168.1.1/cgi-bin/networkinfo.sh';
 $json_data = file_get_contents($url, 0, stream_context_create(["http"=>["timeout"=>5]]));
 $data_array = json_decode($json_data, true);
 if ($data_array === null && json_last_error() !== JSON_ERROR_NONE) {
@@ -35,7 +33,6 @@ function bytesToMebibytes($bytes) {
 	return floor( $megabytes * $precision ) / $precision * $negative;
 }
 
-$db = new PDO('sqlite:/var/www/html/BandwidthMonitor/BandwidthMonitor.db');
 [$CurrentY, $CurrentM, $CurrentD, $CurrentH] = explode('-', date('Y-m-d-H'));
 $previous_hour = date('Y-m-d-H', time() - 3600 * $ProbeInterval);
 [$PreviousY, $PreviousM, $PreviousD, $PreviousH] = explode('-', $previous_hour);

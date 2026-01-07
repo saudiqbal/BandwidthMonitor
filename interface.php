@@ -1,6 +1,5 @@
 <?php
-date_default_timezone_set('America/New_York');
-$ProbeInterval = 1;
+include 'config.php';
 
 [$rx, $tx] = explode(',', exec("awk -v OFS=, '/ens18:/ { print $10, $2 }' /proc/net/dev"));
 
@@ -16,7 +15,6 @@ function bytesToMebibytes($bytes) {
 	return floor( $megabytes * $precision ) / $precision * $negative;
 }
 
-$db = new PDO('sqlite:/var/www/html/BandwidthMonitor/BandwidthMonitor.db');
 [$CurrentY, $CurrentM, $CurrentD, $CurrentH] = explode('-', date('Y-m-d-H'));
 $previous_hour = date('Y-m-d-H', time() - 3600 * $ProbeInterval);
 [$PreviousY, $PreviousM, $PreviousD, $PreviousH] = explode('-', $previous_hour);
