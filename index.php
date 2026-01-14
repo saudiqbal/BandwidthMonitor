@@ -192,7 +192,19 @@ x: {
 stacked: true,
 },
 y: {
-stacked: true
+stacked: true,
+ticks: {
+callback: function(value, index, ticks) {
+	function formatBytes(bytes) {
+		if (bytes === 0) return '0 Bytes';
+		const k = 1000;
+		const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+		const i = Math.floor(Math.log(bytes) / Math.log(k));
+		return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+	}
+	return formatBytes(value);
+	}
+}
 }
 },
 responsive: true
@@ -250,7 +262,19 @@ x: {
 stacked: true,
 },
 y: {
-stacked: true
+stacked: true,
+ticks: {
+callback: function(value, index, ticks) {
+	function formatBytes(bytes) {
+		if (bytes === 0) return '0 Bytes';
+		const k = 1000;
+		const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+		const i = Math.floor(Math.log(bytes) / Math.log(k));
+		return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+	}
+	return formatBytes(value);
+	}
+}
 }
 },
 responsive: true
@@ -308,7 +332,19 @@ x: {
 stacked: true,
 },
 y: {
-stacked: true
+stacked: true,
+ticks: {
+callback: function(value, index, ticks) {
+	function formatBytes(bytes) {
+		if (bytes === 0) return '0 Bytes';
+		const k = 1000;
+		const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+		const i = Math.floor(Math.log(bytes) / Math.log(k));
+		return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+	}
+	return formatBytes(value);
+	}
+}
 }
 },
 responsive: true
@@ -366,7 +402,19 @@ x: {
 stacked: true,
 },
 y: {
-stacked: true
+stacked: true,
+ticks: {
+callback: function(value, index, ticks) {
+	function formatBytes(bytes) {
+		if (bytes === 0) return '0 Bytes';
+		const k = 1000;
+		const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+		const i = Math.floor(Math.log(bytes) / Math.log(k));
+		return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+	}
+	return formatBytes(value);
+	}
+}
 }
 },
 responsive: true
