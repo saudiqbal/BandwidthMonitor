@@ -214,7 +214,7 @@ function fileSizeSI(bytes) {
 		if (bytes <= 0) {
 		return "0 Bytes";
 	}
-	return `${decimal} ${exponent ? `${'kMGTPEZY'[exponent - 1]}iB` : 'iB'}`;
+	return `${decimal} ${exponent ? `${'kMGTPEZY'[exponent - 1]}iB` : 'B'}`;
 }
 var number_of_elements = document.getElementsByClassName('siunits').length;
 var i=0;
