@@ -43,8 +43,8 @@ $yearlyItems = count($yearly_array);
 <script src="chart.umd.min.js"></script>
 <script>
 function fileSizeSI(bytes) {
-	const exponent = Math.floor(Math.log(bytes) / Math.log(1000));
-	const decimal = (bytes / Math.pow(1000, exponent)).toFixed();
+	const exponent = Math.floor(Math.log(bytes) / Math.log(1000.0));
+	const decimal = (bytes / Math.pow(1000.0, exponent)).toFixed(exponent ? 2 : 0);
 		if (bytes <= 0) {
 		return "0 Bytes";
 	}
