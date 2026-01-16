@@ -20,7 +20,7 @@ function readableBytes_1000($bytes) {
 	if ($bytes <= 0) {
 		return "0 Bytes";
 	}
-	$sizes = array('B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+	$sizes = array('B', 'kiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB');
 	$factor = floor(log($bytes) / log(1000));
 	return sprintf('%.2F', $bytes / pow(1000, $factor)) . ' ' . $sizes[$factor];
 }
@@ -41,6 +41,16 @@ $yearlyItems = count($yearly_array);
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
 <script src="chart.umd.min.js"></script>
+<script>
+function fileSizeSI(bytes) {
+	const exponent = Math.floor(Math.log(bytes) / Math.log(1000));
+	const decimal = (bytes / Math.pow(1000, exponent)).toFixed();
+		if (bytes <= 0) {
+		return "0 Bytes";
+	}
+	return `${decimal} ${exponent ? `${'kMGTPEZY'[exponent - 1]}iB` : 'iB'}`;
+}
+</script>
 <style>
 .chartCard {
 width: 100%;
@@ -195,14 +205,7 @@ y: {
 stacked: true,
 ticks: {
 callback: function(value, index, ticks) {
-	function formatBytes(bytes) {
-		if (bytes === 0) return '0 Bytes';
-		const k = 1000;
-		const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-		const i = Math.floor(Math.log(bytes) / Math.log(k));
-		return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-	}
-	return formatBytes(value);
+	return fileSizeSI(value);
 	}
 }
 }
@@ -265,14 +268,7 @@ y: {
 stacked: true,
 ticks: {
 callback: function(value, index, ticks) {
-	function formatBytes(bytes) {
-		if (bytes === 0) return '0 Bytes';
-		const k = 1000;
-		const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-		const i = Math.floor(Math.log(bytes) / Math.log(k));
-		return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-	}
-	return formatBytes(value);
+	return fileSizeSI(value);
 	}
 }
 }
@@ -335,14 +331,7 @@ y: {
 stacked: true,
 ticks: {
 callback: function(value, index, ticks) {
-	function formatBytes(bytes) {
-		if (bytes === 0) return '0 Bytes';
-		const k = 1000;
-		const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-		const i = Math.floor(Math.log(bytes) / Math.log(k));
-		return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-	}
-	return formatBytes(value);
+	return fileSizeSI(value);
 	}
 }
 }
@@ -405,14 +394,7 @@ y: {
 stacked: true,
 ticks: {
 callback: function(value, index, ticks) {
-	function formatBytes(bytes) {
-		if (bytes === 0) return '0 Bytes';
-		const k = 1000;
-		const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-		const i = Math.floor(Math.log(bytes) / Math.log(k));
-		return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-	}
-	return formatBytes(value);
+	return fileSizeSI(value);
 	}
 }
 }

@@ -20,7 +20,7 @@ function readableBytes_1000($bytes) {
 	if ($bytes <= 0) {
 		return "0 Bytes";
 	}
-	$sizes = array('B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+	$sizes = array('B', 'kiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB');
 	$factor = floor(log($bytes) / log(1000));
 	return sprintf('%.2F', $bytes / pow(1000, $factor)) . ' ' . $sizes[$factor];
 }
@@ -214,7 +214,7 @@ function fileSizeSI(bytes) {
 		if (bytes <= 0) {
 		return "0 Bytes";
 	}
-	return `${decimal} ${exponent ? `${'kMGTPEZY'[exponent - 1]}B` : 'B'}`;
+	return `${decimal} ${exponent ? `${'kMGTPEZY'[exponent - 1]}iB` : 'iB'}`;
 }
 var number_of_elements = document.getElementsByClassName('siunits').length;
 var i=0;
