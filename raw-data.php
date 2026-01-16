@@ -63,7 +63,7 @@ background: #d4d4d4;
 <input class="menu-btn" type="checkbox" id="menu-btn" />
 <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
 <ul class="menu">
-<li><a href="index.php">Home</a></li>
+<li><a href="./">Home</a></li>
 </ul>
 </div>
 <div class="content">
@@ -96,7 +96,7 @@ background: #d4d4d4;
 <hr>
 <div class="actions">
 <div class="cardfooter"><?php echo "$CurrentY-$CurrentM-$CurrentD"; ?></div>
-<div class="cardfooter float-right"><a href='index.php' class="ClassicButton" title="Edit" style="text-decoration:none;">Graphical Data</a></div>
+<div class="cardfooter float-right"><a href='./' class="ClassicButton" title="Edit" style="text-decoration:none;">Graphical Data</a></div>
 </div>
 </div>
 
@@ -129,7 +129,7 @@ background: #d4d4d4;
 <hr>
 <div class="actions">
 <div class="cardfooter"></div>
-<div class="cardfooter float-right"><a href='index.php' class="ClassicButton" title="Edit" style="text-decoration:none;">Graphical Data</a></div>
+<div class="cardfooter float-right"><a href='./' class="ClassicButton" title="Edit" style="text-decoration:none;">Graphical Data</a></div>
 </div>
 </div>
 
@@ -162,7 +162,7 @@ background: #d4d4d4;
 <hr>
 <div class="actions">
 <div class="cardfooter">Last 12 months</div>
-<div class="cardfooter float-right"><a href='index.php' class="ClassicButton" title="Edit" style="text-decoration:none;">Graphical Data</a></div>
+<div class="cardfooter float-right"><a href='./' class="ClassicButton" title="Edit" style="text-decoration:none;">Graphical Data</a></div>
 </div>
 </div>
 
@@ -195,7 +195,7 @@ background: #d4d4d4;
 <hr>
 <div class="actions">
 <div class="cardfooter"></div>
-<div class="cardfooter float-right"><a href='index.php' class="ClassicButton" title="Edit" style="text-decoration:none;">Graphical Data</a></div>
+<div class="cardfooter float-right"><a href='./' class="ClassicButton" title="Edit" style="text-decoration:none;">Graphical Data</a></div>
 </div>
 </div>
 </div>
