@@ -44,10 +44,11 @@ $yearlyItems = count($yearly_array);
 <script>
 function fileSizeSI(bytes) {
 	const exponent = Math.floor(Math.log(bytes) / Math.log(1000.0));
-	const decimal = (bytes / Math.pow(1000.0, exponent)).toFixed(exponent ? 2 : 0);
+	const decimalvalue = (bytes / Math.pow(1000.0, exponent)).toFixed(exponent ? 2 : 0);
 		if (bytes <= 0) {
 		return "0 Bytes";
 	}
+	decimal = decimalvalue.replace(/\.00$/,'');
 	return `${decimal} ${exponent ? `${'kMGTPEZY'[exponent - 1]}iB` : 'B'}`;
 }
 </script>
