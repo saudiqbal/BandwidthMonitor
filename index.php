@@ -1,5 +1,6 @@
 <?php
 $startTime = array_sum(explode(' ', microtime()));
+header("Cache-Control: no-store, must-revalidate");
 include 'config.php';
 [$CurrentY, $CurrentM, $CurrentD, $CurrentH] = explode('-', date('Y-m-d-H'));
 $months = array(
