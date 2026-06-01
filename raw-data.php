@@ -21,7 +21,7 @@ function readableBytes_1000($bytes) {
 	if ($bytes <= 0) {
 		return "0 Bytes";
 	}
-	$sizes = array('B', 'kiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB');
+	$sizes = array('B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
 	$factor = floor(log($bytes) / log(1000));
 	return sprintf('%.2F', $bytes / pow(1000, $factor)) . ' ' . $sizes[$factor];
 }
@@ -31,7 +31,7 @@ $daily_array = $db->query("SELECT M, D, rxtotal, txtotal FROM Daily WHERE Y = '$
 $dailyItems = count($daily_array);
 $monthly_array = $db->query("SELECT Y, M, rxtotal, txtotal FROM Monthly ORDER BY rowid DESC")->fetchAll(PDO::FETCH_ASSOC);
 $monthlyItems = count($monthly_array);
-$yearly_array = $db->query("SELECT Y, rxtotal, txtotal FROM Yearly ORDER BY rowid DESC LIMIT 25")->fetchAll(PDO::FETCH_ASSOC);
+$yearly_array = $db->query("SELECT Y, rxtotal, txtotal FROM Yearly ORDER BY rowid DESC")->fetchAll(PDO::FETCH_ASSOC);
 $yearlyItems = count($yearly_array);
 ?>
 <!DOCTYPE html>
@@ -76,11 +76,14 @@ background: #d4d4d4;
 <div class="wrapper">
 <div class="table">
 <div class="row tableheader">
-<div class="cell">Time Stamp</div><div class="cell">Rx</div><div class="cell">Tx</div></div>
+<div class="cell">Time Stamp</div><div class="cell">Total</div><div class="cell">Rx</div><div class="cell">Tx</div></div>
 <?php foreach ($hourly_array as $row) {
 	echo '<div class="row">';
 	echo '<div class="cell" data-title="Time Stamp">';
 	echo $row['H'];
+	echo '</div>';
+	echo '<div class="cell" data-title="Total">';
+	echo $row['rxtotal']+$row['txtotal'].' <span class="siunits">'.$row['rxtotal']+$row['txtotal'].'</span>';
 	echo '</div>';
 	echo '<div class="cell" data-title="Rx">';
 	echo $row['rxtotal'].' <span class="siunits">'.$row['rxtotal'].'</span>';
@@ -109,11 +112,14 @@ background: #d4d4d4;
 <div class="wrapper">
 <div class="table">
 <div class="row tableheader">
-<div class="cell">Time Stamp</div><div class="cell">Rx</div><div class="cell">Tx</div></div>
+<div class="cell">Time Stamp</div><div class="cell">Total</div><div class="cell">Rx</div><div class="cell">Tx</div></div>
 <?php foreach ($daily_array as $row) {
 	echo '<div class="row">';
 	echo '<div class="cell" data-title="Time Stamp">';
 	echo $row['D'];
+	echo '</div>';
+	echo '<div class="cell" data-title="Total">';
+	echo $row['rxtotal']+$row['txtotal'].' <span class="siunits">'.$row['rxtotal']+$row['txtotal'].'</span>';
 	echo '</div>';
 	echo '<div class="cell" data-title="Rx">';
 	echo $row['rxtotal'].' <span class="siunits">'.$row['rxtotal'].'</span>';
@@ -142,11 +148,14 @@ background: #d4d4d4;
 <div class="wrapper">
 <div class="table">
 <div class="row tableheader">
-<div class="cell">Time Stamp</div><div class="cell">Rx</div><div class="cell">Tx</div></div>
+<div class="cell">Time Stamp</div><div class="cell">Total</div><div class="cell">Rx</div><div class="cell">Tx</div></div>
 <?php foreach ($monthly_array as $row) {
 	echo '<div class="row">';
 	echo '<div class="cell" data-title="Time Stamp">';
 	echo $months[$row['M']]." ".$row['Y'];
+	echo '</div>';
+	echo '<div class="cell" data-title="Total">';
+	echo $row['rxtotal']+$row['txtotal'].' <span class="siunits">'.$row['rxtotal']+$row['txtotal'].'</span>';
 	echo '</div>';
 	echo '<div class="cell" data-title="Rx">';
 	echo $row['rxtotal'].' <span class="siunits">'.$row['rxtotal'].'</span>';
@@ -175,11 +184,14 @@ background: #d4d4d4;
 <div class="wrapper">
 <div class="table">
 <div class="row tableheader">
-<div class="cell">Time Stamp</div><div class="cell">Rx</div><div class="cell">Tx</div></div>
+<div class="cell">Time Stamp</div><div class="cell">Total</div><div class="cell">Rx</div><div class="cell">Tx</div></div>
 <?php foreach ($yearly_array as $row) {
 	echo '<div class="row">';
 	echo '<div class="cell" data-title="Time Stamp">';
 	echo $row['Y'];
+	echo '</div>';
+	echo '<div class="cell" data-title="Total">';
+	echo $row['rxtotal']+$row['txtotal'].' <span class="siunits">'.$row['rxtotal']+$row['txtotal'].'</span>';
 	echo '</div>';
 	echo '<div class="cell" data-title="Rx">';
 	echo $row['rxtotal'].' <span class="siunits">'.$row['rxtotal'].'</span>';
@@ -215,7 +227,7 @@ function fileSizeSI(bytes) {
 		if (bytes <= 0) {
 		return "0 Bytes";
 	}
-	return `${decimal} ${exponent ? `${'kMGTPEZY'[exponent - 1]}iB` : 'B'}`;
+	return `${decimal} ${exponent ? `${'kMGTPEZY'[exponent - 1]}B` : 'B'}`;
 }
 var number_of_elements = document.getElementsByClassName('siunits').length;
 var i=0;

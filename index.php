@@ -21,7 +21,7 @@ function readableBytes_1000($bytes) {
 	if ($bytes <= 0) {
 		return "0 Bytes";
 	}
-	$sizes = array('B', 'kiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB');
+	$sizes = array('B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
 	$factor = floor(log($bytes) / log(1000));
 	return sprintf('%.2F', $bytes / pow(1000, $factor)) . ' ' . $sizes[$factor];
 }
@@ -50,7 +50,7 @@ function fileSizeSI(bytes) {
 		return "0 Bytes";
 	}
 	decimal = decimalvalue.replace(/\.00$/,'');
-	return `${decimal} ${exponent ? `${'kMGTPEZY'[exponent - 1]}iB` : 'B'}`;
+	return `${decimal} ${exponent ? `${'kMGTPEZY'[exponent - 1]}B` : 'B'}`;
 }
 </script>
 <style>
@@ -159,11 +159,14 @@ type: 'bar',
 data: {
 labels: [<?php $i = 0;
 foreach ($hourly_array as $row) {
+$hourlyItemsrx = $row['rxtotal'];
+$hourlyItemstx = $row['txtotal'];
+$hourlyItemstotal = $hourlyItemsrx + $hourlyItemstx;
 if(++$i === $hourlyItems) {
-echo '"'.$row['H'].' (Rx: '.readableBytes_1000($row['rxtotal']).' / Tx: '.readableBytes_1000($row['txtotal']).')"';
+	echo '"'.$row['H'].': '.readableBytes_1000($hourlyItemstotal).' (Rx: '.readableBytes_1000($hourlyItemsrx).' / Tx: '.readableBytes_1000($hourlyItemstx).')"';
 }
 else {
-echo '"'.$row['H'].' (Rx: '.readableBytes_1000($row['rxtotal']).' / Tx: '.readableBytes_1000($row['txtotal']).')"' . ",";
+	echo '"'.$row['H'].': '.readableBytes_1000($hourlyItemstotal).' (Rx: '.readableBytes_1000($hourlyItemsrx).' / Tx: '.readableBytes_1000($hourlyItemstx).')"' . ",";
 }
 }?>],
 datasets: [{
@@ -222,11 +225,14 @@ type: 'bar',
 data: {
 labels: [<?php $i = 0;
 foreach ($daily_array as $row) {
+$dailyItemsrx = $row['rxtotal'];
+$dailyItemstx = $row['txtotal'];
+$dailyItemstotal = $dailyItemsrx + $dailyItemstx;
 if(++$i === $dailyItems) {
-echo '"'.$row['D'].' (Rx: '.readableBytes_1000($row['rxtotal']).' / Tx: '.readableBytes_1000($row['txtotal']).')"';
+	echo '"'.$row['D'].': '.readableBytes_1000($dailyItemstotal).' (Rx: '.readableBytes_1000($dailyItemsrx).' / Tx: '.readableBytes_1000($dailyItemstx).')"';
 }
 else {
-echo '"'.$row['D'].' (Rx: '.readableBytes_1000($row['rxtotal']).' / Tx: '.readableBytes_1000($row['txtotal']).')"' . ",";
+	echo '"'.$row['D'].': '.readableBytes_1000($dailyItemstotal).' (Rx: '.readableBytes_1000($dailyItemsrx).' / Tx: '.readableBytes_1000($dailyItemstx).')"' . ",";
 }
 }?>],
 datasets: [{
@@ -285,11 +291,14 @@ type: 'bar',
 data: {
 labels: [<?php $i = 0;
 foreach ($monthly_array as $row) {
+$monthlyItemsrx = $row['rxtotal'];
+$monthlyItemstx = $row['txtotal'];
+$monthlyItemstotal = $monthlyItemsrx + $monthlyItemstx;
 if(++$i === $monthlyItems) {
-echo '"'.$months[$row['M']]." ".$row['Y'].' (Rx: '.readableBytes_1000($row['rxtotal']).' / Tx: '.readableBytes_1000($row['txtotal']).')"';
+	echo '"'.$months[$row['M']]." ".$row['Y'].': '.readableBytes_1000($monthlyItemstotal).' (Rx: '.readableBytes_1000($monthlyItemsrx).' / Tx: '.readableBytes_1000($monthlyItemstx).')"';
 }
 else {
-echo '"'.$months[$row['M']]." ".$row['Y'].' (Rx: '.readableBytes_1000($row['rxtotal']).' / Tx: '.readableBytes_1000($row['txtotal']).')"' . ",";
+	echo '"'.$months[$row['M']]." ".$row['Y'].': '.readableBytes_1000($monthlyItemstotal).' (Rx: '.readableBytes_1000($monthlyItemsrx).' / Tx: '.readableBytes_1000($monthlyItemstx).')"' . ",";
 }
 }?>],
 datasets: [{
@@ -348,11 +357,14 @@ type: 'bar',
 data: {
 labels: [<?php $i = 0;
 foreach ($yearly_array as $row) {
+$yearlyItemsrx = $row['rxtotal'];
+$yearlyItemstx = $row['txtotal'];
+$yearlyItemstotal = $yearlyItemsrx + $yearlyItemstx;
 if(++$i === $yearlyItems) {
-echo '"'.$row['Y'].' (Rx: '.readableBytes_1000($row['rxtotal']).' / Tx: '.readableBytes_1000($row['txtotal']).')"';
+	echo '"'.$row['Y'].': '.readableBytes_1000($yearlyItemstotal).' (Rx: '.readableBytes_1000($yearlyItemsrx).' / Tx: '.readableBytes_1000($yearlyItemstx).')"';
 }
 else {
-echo '"'.$row['Y'].' (Rx: '.readableBytes_1000($row['rxtotal']).' / Tx: '.readableBytes_1000($row['txtotal']).')"' . ",";
+	echo '"'.$row['Y'].': '.readableBytes_1000($yearlyItemstotal).' (Rx: '.readableBytes_1000($yearlyItemsrx).' / Tx: '.readableBytes_1000($yearlyItemstx).')"' . ",";
 }
 }?>],
 datasets: [{

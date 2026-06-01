@@ -1,7 +1,7 @@
 <?php
 include 'config.php';
 
-$json_data = file_get_contents($url, 0, stream_context_create(["http"=>["timeout"=>5]]));
+$json_data = file_get_contents($url, 0, stream_context_create(["http"=>["timeout"=>15]]));
 $data_array = json_decode($json_data, true);
 if ($data_array === null && json_last_error() !== JSON_ERROR_NONE) {
 	echo "Error decoding JSON: " . json_last_error_msg();
