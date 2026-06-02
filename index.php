@@ -75,7 +75,7 @@ background: #d4d4d4;
 <input class="menu-btn" type="checkbox" id="menu-btn" />
 <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
 <ul class="menu">
-<li><a href="./">Home</a></li>
+<li><a href="<?php echo $Homeurl; ?>">Home</a></li>
 </ul>
 </div>
 <div class="content">
