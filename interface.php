@@ -1,7 +1,10 @@
 <?php
 include 'config.php';
 
-[$rx, $tx] = explode(',', exec("awk -v OFS=, '/ens18:/ { print $10, $2 }' /proc/net/dev"));
+[$rx, $tx] = explode(',', exec("awk -v OFS=, '/$NICinterface:/ { print $10, $2 }' /proc/net/dev"));
+
+echo 'Interface rxtotal: '.$rx;
+echo '<br>Interface txtotal: '.$tx;
 
 function bytesToMebibytes($bytes) {
 	$megabytes = $bytes / 1000000;
@@ -27,27 +30,25 @@ if (empty($bandwidth_calculation)) {
 }
 else
 {
-	echo '<br>rxtotal: ';
-	echo $bandwidth_calculation["rx"];
-	echo '<br>txtotal: ';
-	echo $bandwidth_calculation["tx"];
+	echo '<br>Previous rxtotal: '.$bandwidth_calculation["rx"];
+	echo '<br>Previous txtotal: '.$bandwidth_calculation["tx"];
 // RX
-if($rx < $bandwidth_calculation["rx"])
+if($rx < (int)$bandwidth_calculation["rx"])
 {
 	$rxtotal = $rx;
 }
 else
 {
-	$rxtotal = $rx - $bandwidth_calculation["rx"];
+	$rxtotal = $rx - (int)$bandwidth_calculation["rx"];
 }
 // TX
-if($tx < $bandwidth_calculation["tx"])
+if($tx < (int)$bandwidth_calculation["tx"])
 {
 	$txtotal = $tx;
 }
 else
 {
-	$txtotal = $tx - $bandwidth_calculation["tx"];
+	$txtotal = $tx - (int)$bandwidth_calculation["tx"];
 }
 }
 // Final hour total

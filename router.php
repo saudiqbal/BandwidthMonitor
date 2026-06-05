@@ -50,22 +50,22 @@ else
 	echo '<br>txtotal: ';
 	echo $bandwidth_calculation["tx"];
 // RX
-if($rx < $bandwidth_calculation["rx"])
+if($rx < (int)$bandwidth_calculation["rx"])
 {
 	$rxtotal = $rx;
 }
 else
 {
-	$rxtotal = $rx - $bandwidth_calculation["rx"];
+	$rxtotal = $rx - (int)$bandwidth_calculation["rx"];
 }
 // TX
-if($tx < $bandwidth_calculation["tx"])
+if($tx < (int)$bandwidth_calculation["tx"])
 {
 	$txtotal = $tx;
 }
 else
 {
-	$txtotal = $tx - $bandwidth_calculation["tx"];
+	$txtotal = $tx - (int)$bandwidth_calculation["tx"];
 }
 }
 // Final hour total

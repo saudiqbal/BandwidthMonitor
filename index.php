@@ -159,8 +159,8 @@ type: 'bar',
 data: {
 labels: [<?php $i = 0;
 foreach ($hourly_array as $row) {
-$hourlyItemsrx = $row['rxtotal'];
-$hourlyItemstx = $row['txtotal'];
+$hourlyItemsrx = (int)$row['rxtotal'];
+$hourlyItemstx = (int)$row['txtotal'];
 $hourlyItemstotal = $hourlyItemsrx + $hourlyItemstx;
 if(++$i === $hourlyItems) {
 	echo '"'.$row['H'].': '.readableBytes_1000($hourlyItemstotal).' (Rx: '.readableBytes_1000($hourlyItemsrx).' / Tx: '.readableBytes_1000($hourlyItemstx).')"';
@@ -225,8 +225,8 @@ type: 'bar',
 data: {
 labels: [<?php $i = 0;
 foreach ($daily_array as $row) {
-$dailyItemsrx = $row['rxtotal'];
-$dailyItemstx = $row['txtotal'];
+$dailyItemsrx = (int)$row['rxtotal'];
+$dailyItemstx = (int)$row['txtotal'];
 $dailyItemstotal = $dailyItemsrx + $dailyItemstx;
 if(++$i === $dailyItems) {
 	echo '"'.$row['D'].': '.readableBytes_1000($dailyItemstotal).' (Rx: '.readableBytes_1000($dailyItemsrx).' / Tx: '.readableBytes_1000($dailyItemstx).')"';
@@ -291,8 +291,8 @@ type: 'bar',
 data: {
 labels: [<?php $i = 0;
 foreach ($monthly_array as $row) {
-$monthlyItemsrx = $row['rxtotal'];
-$monthlyItemstx = $row['txtotal'];
+$monthlyItemsrx = (int)$row['rxtotal'];
+$monthlyItemstx = (int)$row['txtotal'];
 $monthlyItemstotal = $monthlyItemsrx + $monthlyItemstx;
 if(++$i === $monthlyItems) {
 	echo '"'.$months[$row['M']]." ".$row['Y'].': '.readableBytes_1000($monthlyItemstotal).' (Rx: '.readableBytes_1000($monthlyItemsrx).' / Tx: '.readableBytes_1000($monthlyItemstx).')"';
@@ -357,8 +357,8 @@ type: 'bar',
 data: {
 labels: [<?php $i = 0;
 foreach ($yearly_array as $row) {
-$yearlyItemsrx = $row['rxtotal'];
-$yearlyItemstx = $row['txtotal'];
+$yearlyItemsrx = (int)$row['rxtotal'];
+$yearlyItemstx = (int)$row['txtotal'];
 $yearlyItemstotal = $yearlyItemsrx + $yearlyItemstx;
 if(++$i === $yearlyItems) {
 	echo '"'.$row['Y'].': '.readableBytes_1000($yearlyItemstotal).' (Rx: '.readableBytes_1000($yearlyItemsrx).' / Tx: '.readableBytes_1000($yearlyItemstx).')"';
