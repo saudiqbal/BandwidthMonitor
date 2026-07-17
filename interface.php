@@ -1,5 +1,8 @@
 <?php
 include 'config.php';
+$db = new PDO("sqlite:$db_filename");
+$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 [$rx, $tx] = explode(',', exec("awk -v OFS=, '/$NICinterface:/ { print $10, $2 }' /proc/net/dev"));
 

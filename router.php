@@ -1,5 +1,8 @@
 <?php
 include 'config.php';
+$db = new PDO("sqlite:$db_filename");
+$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $json_data = file_get_contents($url, 0, stream_context_create(["http"=>["timeout"=>15]]));
 $data_array = json_decode($json_data, true);
