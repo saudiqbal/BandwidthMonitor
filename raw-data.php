@@ -1,6 +1,6 @@
 <?php
 $startTime = array_sum(explode(' ', microtime()));
-header("Cache-Control: no-store, must-revalidate");
+header("Cache-Control: no-store, no-cache, must-revalidate");
 include 'config.php';
 $db = new PDO("sqlite:$db_filename");
 $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);

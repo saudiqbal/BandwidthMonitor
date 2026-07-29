@@ -2,6 +2,7 @@
 // Login Password
 $password='';
 
+header("Cache-Control: no-store, no-cache, must-revalidate");
 $fresh='1';
 if($fresh=='1')
 {
